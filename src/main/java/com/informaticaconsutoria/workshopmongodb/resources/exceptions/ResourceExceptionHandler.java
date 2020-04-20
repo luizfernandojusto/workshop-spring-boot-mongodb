@@ -1,4 +1,4 @@
-package com.informaticaconsutoria.workshopmongodb.resource.exceptions;
+package com.informaticaconsutoria.workshopmongodb.resources.exceptions;
 
 import java.time.Instant;
 

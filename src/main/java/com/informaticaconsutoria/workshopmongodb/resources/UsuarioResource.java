@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.informaticaconsutoria.workshopmongodb.domain.Postagem;
 import com.informaticaconsutoria.workshopmongodb.domain.Usuario;
 import com.informaticaconsutoria.workshopmongodb.dto.UsuarioDTO;
 import com.informaticaconsutoria.workshopmongodb.services.UsuarioService;
@@ -61,5 +62,11 @@ public class UsuarioResource {
 		usuario.setId(id);
 		usuario = usuarioService.atualizar(usuario);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping(value = "/{id}/postagens")
+	public ResponseEntity<List<Postagem>> listarPostagemIdUsuario(@PathVariable String id) {
+		Usuario usuario = usuarioService.listarId(id);
+		return ResponseEntity.ok().body(usuario.getPostagens());
 	}
 }
