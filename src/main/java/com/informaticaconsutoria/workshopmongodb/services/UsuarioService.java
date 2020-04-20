@@ -30,6 +30,23 @@ public class UsuarioService {
 		return usuarioRepository.insert(usuario);
 	}
 
+	public void deletar(String id) {
+		listarId(id);
+		usuarioRepository.deleteById(id);
+	}
+
+	public Usuario atualizar(Usuario obj) {
+
+		Usuario newObj = listarId(obj.getId());
+		atualizarDados(newObj, obj);
+		return usuarioRepository.save(newObj);
+	}
+
+	private void atualizarDados(Usuario newObj, Usuario obj) {
+		newObj.setNome(obj.getNome());
+		newObj.setEmail(obj.getEmail());
+	}
+
 	public Usuario fromDTO(UsuarioDTO usuarioDTO) {
 		return new Usuario(usuarioDTO.getId(), usuarioDTO.getNome(), usuarioDTO.getEmail());
 	}
