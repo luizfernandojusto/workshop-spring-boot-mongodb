@@ -1,11 +1,14 @@
 package com.informaticaconsutoria.workshopmongodb.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.informaticaconsutoria.workshopmongodb.dto.ComentarioDTO;
 import com.informaticaconsutoria.workshopmongodb.dto.UsuarioPostagemDTO;
 
 @Document(collection = "postagem")
@@ -19,6 +22,7 @@ public class Postagem implements Serializable {
 	private String corpo;
 
 	private UsuarioPostagemDTO usuarioPostagemDTO;
+	private List<ComentarioDTO> comentarios = new ArrayList<>();
 
 	public Postagem() {
 	}
@@ -70,6 +74,14 @@ public class Postagem implements Serializable {
 
 	public UsuarioPostagemDTO getUsuario() {
 		return usuarioPostagemDTO;
+	}
+
+	public List<ComentarioDTO> getComentarios() {
+		return comentarios;
+	}
+
+	public void setComentarios(List<ComentarioDTO> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	@Override
