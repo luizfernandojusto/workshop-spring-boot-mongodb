@@ -45,6 +45,11 @@ public class Instanciacao implements CommandLineRunner {
 				new UsuarioPostagemDTO(maria));
 
 		postagemRepository.saveAll(Arrays.asList(p1, p2));
+		
+		
+
+		maria.getPostagens().addAll(Arrays.asList(p1, p2));
+		usuarioRepository.save(maria);
 
 	}
 
